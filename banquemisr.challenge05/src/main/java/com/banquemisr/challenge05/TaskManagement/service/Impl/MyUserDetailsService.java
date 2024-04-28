@@ -20,8 +20,7 @@ public class MyUserDetailsService implements UserDetailsService {
         // Retrieve user details from the database based on the provided username
         com.banquemisr.challenge05.TaskManagement.Entity.User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
-System.out.println(user.getRole().name());
-        // Construct a UserDetails object with the retrieved user details and roles
+  // Construct a UserDetails object with the retrieved user details and roles
         return org.springframework.security.core.userdetails.User.builder()
                 .username(user.getUsername())
                 .password(user.getPassword()) // Assuming password is stored securely (e.g., hashed)
